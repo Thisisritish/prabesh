@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prabesh | Developer</title>
+    <style>
+        :root { --primary: #2563eb; --dark: #1e40af; --light: #dbeafe; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            color: #1e3a8a;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 2rem;
+        }
+        .projects {
+            display: grid;
+            gap: 1.5rem;
+        }
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .project-img {
+            height: 200px;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        .project-content {
+            padding: 1.5rem;
+        }
+        .skills {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .skill-bar {
+            margin: 1rem 0;
+        }
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        .progress {
+            height: 10px;
+            background: #e0e7ff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 5px;
+        }
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 1rem;
+        }
+        button:hover {
+            background: var(--dark);
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--dark);
+            color: white;
+            margin-top: 2rem;
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Prabesh's Portfolio</h1>
+        <p>Full-Stack Developer & UI Designer</p>
+    </header>
+
+    <div class="container">
+        <main class="projects">
+            <div class="project-card">
+                <div class="project-img">💻</div>
+                <div class="project-content">
+                    <h2>E-Commerce Platform</h2>
+                    <p>React, Node.js, MongoDB implementation with payment integration</p>
+                    <button onclick="showProjectDetails('ecom')">View Details</button>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img">📱</div>
+                <div class="project-content">
+                    <h2>Health Tracker App</h2>
+                    <p>Mobile-first PWA with health analytics dashboard</p>
+                    <button onclick="showProjectDetails('health')">View Details</button>
+                </div>
+            </div>
+        </main>
+
+        <aside class="skills">
+            <h2>Technical Skills</h2>
+            <div class="skill-bar">
+                <div class="skill-name">
+                    <span>JavaScript</span>
+                    <span>95%</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-fill" style="width: 95%"></div>
+                </div>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-name">
+                    <span>React</span>
+                    <span>90%</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-fill" style="width: 90%"></div>
+                </div>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-name">
+                    <span>Node.js</span>
+                    <span>85%</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-fill" style="width: 85%"></div>
+                </div>
+            </div>
+            <button id="themeToggle">🌙 Dark Mode</button>
+        </aside>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Prabesh Portfolio. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function showProjectDetails(project) {
+            const projects = {
+                'ecom': 'Complete e-commerce solution with real-time inventory management and 3D product visualization',
+                'health': 'AI-powered health analytics with wearable device integration and predictive health insights'
+            };
+            alert(projects[project]);
+        }
+
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            this.textContent = document.body.classList.contains('dark-mode') 
+                ? '☀️ Light Mode' 
+                : '🌙 Dark Mode';
+            
+            if(document.body.classList.contains('dark-mode')) {
+                document.documentElement.style.setProperty('--primary', '#3b82f6');
+                document.documentElement.style.setProperty('--dark', '#1d4ed8');
+                document.documentElement.style.setProperty('--light', '#93c5fd');
+                document.body.style.background = 'linear-gradient(135deg, #0f172a, #1e293b)';
+                document.body.style.color = '#cbd5e1';
+            } else {
+                document.documentElement.style.setProperty('--primary', '#2563eb');
+                document.documentElement.style.setProperty('--dark', '#1e40af');
+                document.documentElement.style.setProperty('--light', '#dbeafe');
+                document.body.style.background = 'linear-gradient(135deg, #f0f9ff, #e0f2fe)';
+                document.body.style.color = '#1e3a8a';
+            }
+        });
+
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+            });
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.transition = 'opacity 0.5s, transform 0.5s';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            projectCards.forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
